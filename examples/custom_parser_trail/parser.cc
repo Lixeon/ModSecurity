@@ -36,7 +36,7 @@ class CustomDriverTrail : public modsecurity::Parser::DriverTrail {
     };
     int addSecAction(Rule *rule) { return 0; };
     int addSecMarker(std::string marker) { return 0; };
-    int addSecRuleScript(RuleScript *rule) { return 0; };
+    int addSecRuleScript(Rule *rule) { return 0; };
 
     Rule *m_lastRule;
 };
@@ -44,13 +44,13 @@ class CustomDriverTrail : public modsecurity::Parser::DriverTrail {
 
 int main(int argc, char **argv) {
     modsecurity::ModSecurity *modsec;
-    modsecurity::Parser::Driver *driver = new modsecurity::Parser::Driver(new CustomDriverTrail());
-    if (argc < 2) {
-        std::cout << "Use " << *argv << " test-case-file.conf";
-        std::cout << std::endl << std::endl;
-        return -1;
-    }
-    *(argv++);
+    //modsecurity::Parser::Driver *driver = new modsecurity::Parser::Driver(new CustomDriverTrail());
+    //if (argc < 2) {
+        //std::cout << "Use " << *argv << " test-case-file.conf";
+        //std::cout << std::endl << std::endl;
+        //return -1;
+    //}
+    //*(argv++);
 
     std::string rules_arg(*argv);
 
@@ -68,10 +68,10 @@ int main(int argc, char **argv) {
      */
 
 
-    if (driver->parseFile(rules_arg.c_str()) < 0) {
-        std::cout << "Problems loading the rules..." << std::endl;
-        return -1;
-    }
+    //if (driver->parseFile(rules_arg.c_str()) < 0) {
+        //std::cout << "Problems loading the rules..." << std::endl;
+        //return -1;
+    //}
 
     //delete driver;
     delete modsec;

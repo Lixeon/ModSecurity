@@ -46,7 +46,7 @@ class DriverTrail : public RulesProperties {
     virtual int addSecRule(Rule *rule) = 0;
     virtual int addSecAction(Rule *rule) = 0;
     virtual int addSecMarker(std::string marker) = 0;
-    virtual int addSecRuleScript(RuleScript *rule) = 0;
+    virtual int addSecRuleScript(Rule *rule) = 0;
 
     std::ostringstream m_error;
 };

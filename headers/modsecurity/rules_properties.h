@@ -41,9 +41,6 @@
 
 namespace modsecurity {
 class RulesExceptions;
-namespace Parser {
-class Driver;
-}
 
 using modsecurity::debug_log::DebugLog;
 using modsecurity::audit_log::AuditLog;

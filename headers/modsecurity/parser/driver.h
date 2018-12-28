@@ -39,65 +39,6 @@ using modsecurity::Rules;
 namespace modsecurity {
 namespace Parser {
 
-#ifdef __cplusplus
-class Driver;
-#else
-typedef struct Driver_t Driver;
-#endif
-
-
-class Driver {
- public:
-    Driver(DriverTrail *trail);
-    Driver();
-    virtual ~Driver();
-
-    bool scanBegin();
-    void scanEnd();
-
-    int parseFile(const std::string& f);
-    int parse(const std::string& f, const std::string &ref);
-
-    void error(const yy::location& l, const std::string& m);
-    void error(const yy::location& l, const std::string& m,
-        const std::string& c);
-
-
-    int addSecRule(Rule *rule) {
-        if (!m_trail) {
-            return -1;
-        }
-        return m_trail->addSecRule(rule);
-    }
-    int addSecAction(Rule *rule) {
-        if (!m_trail) {
-            return -1;
-        }
-        return m_trail->addSecAction(rule);
-    }
-    int addSecMarker(std::string marker) {
-        if (!m_trail) {
-            return -1;
-        }
-        return m_trail->addSecMarker(marker);
-    }
-    int addSecRuleScript(RuleScript *rule) {
-        if (!m_trail) {
-            return -1;
-        }
-        return m_trail->addSecRuleScript(rule);
-    }
-
-    DriverTrail *m_trail;
-
-    bool m_traceScanning;
-    bool m_traceParsing;
-    std::string m_file;
-    std::list<yy::location *> m_location;
-    std::list<std::string> m_reference;
-    std::string buffer;
-    std::ostringstream m_parserError;
-};
 
 
 }  // namespace Parser
